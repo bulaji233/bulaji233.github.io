@@ -201,147 +201,107 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-inline-math-container mjx-container { zoom: 0.95; }
 
 
-/* 字体  Font: SourceHanSans*/
-/* 代码块字体  Code block font: Fira Code */
-@font-face {
-    font-family: 'Fira Code';
-    src: url('file:///C://Users//Administrator//AppData//Roaming//Typora/themes/mlike/woff2/FiraCode-Regular.woff2') format('woff2'),
-    url('file:///C://Users//Administrator//AppData//Roaming//Typora/themes/mlike/ttf/FiraCode-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}/*ver 0.2.0 mlike*/
-/*Auto Dark or Light*/
-@import "";
-
-/*noinspection CssInvalidAtRule*/
-@include-when-export url(https://cdn.bootcdn.net/ajax/libs/firacode/5.2.0/fira_code.min.css);
-
 :root {
-    --border-color: #4fa8d4;
-    --window-border: 1px solid #4fa8d4;
-    /*--panel-border-color: #4fa8d4;*/
-    --panel-border-color: #000000;
-    --link-color: rgb(0, 185, 115);
-    --contra-link-color: rgb(255, 70, 140);
-    --active-file-border-color: var(--link-color);
-    --item-hover-bg-color: rgba(229, 229, 229, 0.59);
-    --active-file-bg-color: var(--item-hover-bg-color);
-    --code-bg-color: var(--code-block-bg-color);
-
+    /**
+    * 系统变量
+    */
+    /*基础文字颜色*/
+    --text-color: #f5f6f7;
+    /*背景颜色*/
+    --bg-color: #18191a;
+    /*侧边栏宽度*/
+    --sidebar-width: 300px;
+    /*选择字体颜色*/
+    --select-text-font-color: #000000;
+    /*侧边栏颜色*/
+    --side-bar-bg-color: var(--bg-color);
+    /*代码块背景*/
+    --code-block-bg-color: rgb(40, 42, 54);
+    /*文件选中的背景*/
+    --active-file-bg-color: #4b4b4b;
+    /*latex背景*/
     --rawblock-edit-panel-bd: var(--code-block-bg-color);
-    /*Base font*/
-    --font-family: '思源黑体 CN', 'Segoe UI', SegoeUI, 'Microsoft YaHei', 微软雅黑, Arial, sans-serif;
-    --code-font-family: 'Fira Code', SFMono-Regular, Consolas;
 
+    /**
+    * 自定义变量
+    */
+    /*基础字体*/
+    --as-font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /*等宽代码字体*/
+    --as-font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /*yaml块背景*/
+    --as-meta-block-bg-color: hsla(0, 0%, 100%, 0.05);
+    /*yaml块字体颜色*/
+    --as-meta-block-font-color: #dadde1;
+    /*行内代码颜色*/
+    --as-inline-code-color: #ff6e6e;
+    /*超链接颜色*/
+    --as-link-color: #00aeff;
+    /*标题颜色*/
+    --as-title-color: #e3f7ff;
+    /*右键菜单背景颜色*/
+    --as-dropdown-menu: #242526;
+    /*偏好设置背景颜色*/
+    --as-nav-group-item-bg-color: #4b4b4b;
+    /*引用边栏颜色*/
+    --as-blockquote-border-color: #606770;
+    /*引用字体颜色*/
+    --as-blockquote-font-color: #ebedf0;
 }
 
-/*Light*/
-@media (prefers-color-scheme: light) {
-    :root {
-        /*Background color*/
-        --bg-color: #ffffff;
-        --side-bar-bg-color: #ffffff;
-        /*Text color*/
-        --text-color: #282c34;
-        --main-text-color: #000000;
-        /*Code block bg color*/
-        --code-block-bg-color: #f5f5f5;
-        --code-bg-color: rgba(0, 0, 0, 0.05);
-    }
-}
-
-/*Dark*/
-@media (prefers-color-scheme: dark) {
-    :root {
-        /*Background color*/
-        --bg-color: #000000;
-        --side-bar-bg-color: #000000;
-        /*Text color*/
-        --text-color: #f5f5f5;
-        --main-text-color: #ffffff;
-        /*Code block bg color*/
-        --code-block-bg-color: #282c34;
-        --code-bg-color: rgba(255, 255, 255, 0.2);
-    }
-}
-
-html {
-    background-color: var(--bg-color);
-    font-size: 16px;
-    color: var(--text-color);
-    font-family: var(--font-family);
-}
-
+html,
+body,
 #write {
-    max-width: 900px;
-    text-align: justify;
-    line-height: 2;
+    background: var(--bg-color);
+    font: 100%/1.65 var(--as-font-family-base);
+    max-width: 950px;
 }
 
-/*YAML front matter*/
-pre.md-meta-block {
-    padding: 10px 20px;
-    background-color: var(--code-block-bg-color);
-    color: var(--text-color);
-    border-bottom: 1px dashed var(--text-color);
-    font-family: var(--code-font-family);
-}
 
-/*Headings*/
+/*标题*/
 #write h1,
 #write h2,
 #write h3,
 #write h4,
 #write h5,
 #write h6 {
-    color: var(--main-text-color);
+    color: var(--as-title-color);
+    font-family: var(--as-font-family-base);
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 1rem 0;
 }
 
 #write h1 {
     font-size: 3rem;
 }
 
-#write h1 span {
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--text-color);
-    transition: border-bottom-color 0.4s ease-in-out 0s;
-}
-
-#write h1:hover > span {
-    border-bottom: 1px solid transparent;
-}
-
 #write h2 {
-    font-size: 2.5rem;
-}
-
-#write h2 span {
-    border-bottom: 1px solid var(--text-color);
-    transition: border-bottom-color 0.4s ease-in-out 0s;
-}
-
-#write h2:hover > span {
-    border-bottom: 1px solid transparent;
+    font-size: 1.6rem;
 }
 
 #write h3 {
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 #write h4 {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 #write h5 {
-    font-size: 1.25rem;
+    font-size: 0.85rem;
 }
 
 #write h6 {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
 }
 
-/*Table*/
-#write table {
+#write .md-heading:before {
+    color: var(--as-link-color);
+}
+
+/*表格*/
+#write table:not(.md-grid-board) {
     background-color: var(--code-block-bg-color);
     margin: 20px 0;
     border-collapse: separate;
@@ -349,202 +309,404 @@ pre.md-meta-block {
 }
 
 
-#write table td {
+#write table:not(.md-grid-board) td {
     padding: 12px 24px;
-    border-left: 1px dashed var(--text-color);
-    border-bottom: 1px dashed var(--text-color);
+    /*border-left: 1px dashed var(--text-color);*/
+    /*border-bottom: 1px dashed var(--text-color);*/
 }
 
-#write table th {
+#write table:not(.md-grid-board) th {
     padding: 12px 24px;
-    border-left: 1px solid var(--text-color);
-    border-bottom: 1px solid var(--text-color);
+    /*border-left: 1px solid var(--text-color);*/
+    /*border-bottom: 1px solid var(--text-color);*/
 }
 
-#write table td:hover, #write table th:hover {
+#write table tbody tr:nth-child(2n-1) {
+    background-color: var(--as-meta-block-bg-color);
+}
+
+#write table:not(.md-grid-board) td:hover, #write table:not(.md-grid-board) th:hover {
     background-color: rgba(140, 140, 140, .2);
 }
 
-#write table tr td:first-child, #write table tr th:first-child {
+#write table:not(.md-grid-board) tr td:first-child, #write table:not(.md-grid-board) tr th:first-child {
     border-left: 0;
 }
 
-#write table tr:last-child td {
+#write table:not(.md-grid-board) tr:last-child td {
     border-bottom: 0;
 }
 
-#write table tr:first-child th:first-child {
+#write table:not(.md-grid-board) tr:first-child th:first-child {
     border-top-left-radius: 5px;
 }
 
-#write table tr:first-child th:last-child {
+#write table:not(.md-grid-board) tr:first-child th:last-child {
     border-top-right-radius: 5px;
 }
 
-#write table tr:last-child td:first-child {
+#write table:not(.md-grid-board) tr:last-child td:first-child {
     border-bottom-left-radius: 5px;
 }
 
-#write table tr:last-child td:last-child {
+#write table:not(.md-grid-board) tr:last-child td:last-child {
     border-bottom-right-radius: 5px;
 }
 
-/*Table control block*/
-.arrow::after {
-    border-bottom-color: var(--border-color) !important;
+/*表格更多菜单, 其它的右键菜单*/
+.dropdown-menu:not(.megamenu-menu-list) {
+    border-radius: 5px;
+    /*border: 1px solid var(--text-color);*/
+    background: var(--as-dropdown-menu);
 }
 
-.md-grid-board-wrap.md-reset.code-tooltip-content {
-    padding-left: 12%;
-}
-
-.md-table-edit .popover-title {
-    padding: 8px 0;
-}
-
-.md-table-edit .md-table-resize-popover {
-    border: 1px dashed var(--border-color);
-    background-color: var(--code-block-bg-color);
-}
-
-.md-table-edit .md-table-resize-popover table {
-    border-collapse: separate;
-}
-
-.md-table-edit .md-table-resize-popover table td {
-    padding: 0 !important;
-    border: 0 !important;
-}
-
-.md-table-edit .md-grid-board tr[row='1'] {
-    background: #66666611;
-}
-
-.dropdown-menu {
-    border: 1px dashed var(--border-color);
-}
-
-/*TODO: md-tooltip-remove border*/
-
-/*Lists*/
-/* TODO: UL, OL*/
-#write input[type=checkbox] {
-    height: 1rem;
-    width: 1rem;
-    margin-top: 10px;
-}
-
-#write .task-list-item .md-line, #write .task-list-item .md-plain {
-    margin-left: 10px;
-}
-
-/*Blockquote*/
-#write blockquote {
-    background-color: var(--code-block-bg-color);
-    color: var(--main-text-color);
-    margin: 20px 0;
-    padding: 20px !important;
-    border: 1px solid var(--bg-color);
-    transition: border 1s;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+/*表格编辑栏*/
+#write .ty-table-edit {
+    background: var(--code-block-bg-color);
     border-radius: 5px;
 }
 
-#write blockquote:hover {
-    border: 1px solid var(--border-color);
-}
-
-/*Hr*/
-hr {
-    color: var(--text-color);
-}
-
-hr:hover {
-    color: var(--border-color);
-}
-
-/*Mermaid、 flow sequence */
-.md-diagram-panel {
-    max-width: 900px;
-    margin-top: 60px;
+#write .popover {
     background: var(--code-block-bg-color);
 }
 
-.md-diagram-panel svg span {
-    color: var(--text-color);
+#write .arrow::after {
+    border-bottom-color: var(--as-meta-block-bg-color) !important;
 }
 
-.md-diagram-panel svg .edgePath .path {
-    stroke: var(--border-color);
+#write .popover-title {
+    padding: 0;
 }
 
-.md-diagram-panel svg marker path {
-    fill: var(--border-color);
+#md-resize-grid {
+
+    display: block !important;
+    margin-left: 40px !important;
 }
 
-.md-diagram-panel svg rect[fill="var(--bg-color)"] {
-    fill: var(--code-block-bg-color) !important;
+/*段落*/
+#write > p, #write > pre, #write > ul {
+    margin-bottom: 1.25rem;
 }
 
-.md-diagram-panel svg .loopText,
-.md-diagram-panel svg .titleText {
-    fill: var(--text-color) !important;
+/*mark 高亮*/
+mark {
+    background: var(--as-inline-code-color) !important;
+    border-radius: 4px !important;
+    padding: 1px 4px;
+    font-weight: 700;
 }
 
-/*Footnote definition*/
-sup.md-footnote {
-    color: var(--main-text-color) !important;
-    font-weight: 300 !important;
-    background: none !important;
+/*行内代码*/
+#write :not(pre) > code {
+    color: var(--as-inline-code-color);
+    padding: 0 4px;
 }
 
-
-.md-def-footnote .md-def-name {
-    padding-right: 1ch;
-    font-weight: 300;
-    color: var(--text-color);
-}
-
-.md-def-footnote .md-def-name:before {
-    content: '[';
-    color: var(--text-color);
-}
-
-.md-def-footnote .md-def-name:after {
-    content: ']';
-    color: var(--text-color);
-}
-
-/*Code-Block-Styles*/
-.md-fences {
-    font-family: var(--code-font-family);
+#write code {
     background-color: var(--code-block-bg-color);
-    cursor: default;
-    color: var(--text-color);
-    margin: 20px 0;
-    padding: 35px 20px 20px !important;
-    border-radius: 5px;
+    border: .1rem solid rgba(0, 0, 0, .1);
+    border-radius: 0.4rem;
+    font-family: var(--as-font-family-monospace);
+    font-size: 0.95rem;
+    padding: 0.1rem;
 }
 
-.md-fences::before {
-    content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDU0IDE0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNGRjVGNTYiIHN0cm9rZT0iI0UwNDQzRSIgc3Ryb2tlLXdpZHRoPSIuNSI+PC9jaXJjbGU+CiAgICAgICAgPGNpcmNsZSBjeD0iMjYiIGN5PSI2IiByPSI2IiBmaWxsPSIjRkZCRDJFIiBzdHJva2U9IiNERUExMjMiIHN0cm9rZS13aWR0aD0iLjUiPjwvY2lyY2xlPgogICAgICAgIDxjaXJjbGUgY3g9IjQ2IiBjeT0iNiIgcj0iNiIgZmlsbD0iIzI3QzkzRiIgc3Ryb2tlPSIjMUFBQjI5IiBzdHJva2Utd2lkdGg9Ii41Ij48L2NpcmNsZT4KICAgIDwvZz4KPC9zdmc+');
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    z-index: 5;
+/*Latex*/
+.md-hover-tip .md-arrow:after {
+    background: var(--code-block-bg-color);
+
 }
 
-.md-fences:hover::before {
-    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTQiIGhlaWdodD0iMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8Y2lyY2xlIGlkPSJzdmdfMiIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZT0iI0UwNDQzRSIgZmlsbD0iI0ZGNUY1NiIgcj0iNiIgY3k9IjciIGN4PSI2LjgwNzY5MyIvPgogICAgPGNpcmNsZSBpZD0ic3ZnXzMiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2U9IiNERUExMjMiIGZpbGw9IiNGRkJEMkUiIHI9IjYiIGN5PSI3IiBjeD0iMjYuODA3NjkzIi8+CiAgICA8Y2lyY2xlIGlkPSJzdmdfNCIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZT0iIzFBQUIyOSIgZmlsbD0iIzI3QzkzRiIgcj0iNiIgY3k9IjciIGN4PSI0Ni44MDc2OTMiLz4KICAgIDxsaW5lIHRyYW5zZm9ybT0icm90YXRlKDQ1IDYuNzM4NTUxNjE2NjY4NzA2LDcuMDg3MTQwNTYwMTUwMTQ2KSAiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLWxpbmVjYXA9Im51bGwiCiAgICAgICAgICBzdHJva2UtbGluZWpvaW49Im51bGwiIGlkPSJzdmdfMTMiIHkyPSI3LjA4NzE0MSIgeDI9IjExLjU3MzIyMiIgeTE9IjcuMDg3MTQxIiB4MT0iMS45MDM4ODIiCiAgICAgICAgICBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB0cmFuc2Zvcm09InJvdGF0ZSgtNDUgNi43Mzg1NTE2MTY2Njg3MDIsNy4wODcxNDA1NjAxNTAxNDYpICIgc3Ryb2tlPSIjNTU1IiBzdHJva2UtbGluZWNhcD0ibnVsbCIKICAgICAgICAgIHN0cm9rZS1saW5lam9pbj0ibnVsbCIgaWQ9InN2Z18xNSIgeTI9IjcuMDg3MTQxIiB4Mj0iMTEuNTczMjIyIiB5MT0iNy4wODcxNDEiIHgxPSIxLjkwMzg4MiIKICAgICAgICAgIGZpbGwtb3BhY2l0eT0ibnVsbCIgc3Ryb2tlLW9wYWNpdHk9Im51bGwiIGZpbGw9Im5vbmUiLz4KICAgIDxsaW5lIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLWxpbmVjYXA9Im51bGwiIHN0cm9rZS1saW5lam9pbj0ibnVsbCIgaWQ9InN2Z18xNiIgeTI9IjcuMDg3MTQxIiB4Mj0iMzEuNzY1NTAzIgogICAgICAgICAgeTE9IjcuMDg3MTQxIiB4MT0iMjIuMDk2MTYyIiBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIiBmaWxsPSJub25lIi8+CiAgICA8cGF0aCB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NS42Nzc3Njg3MDcyNzUzOSw2LjMwMTg5ODQ3OTQ2MTY3NCkgIiBpZD0ic3ZnXzE4IgogICAgICAgICAgZD0ibTQ1LjI5MzE1MSw2LjY4NjUxNGwwLC0wLjc2OTIzMWwwLjc2OTIzMSwwLjc2OTIzMWwtMC43NjkyMzEsMHoiIGZpbGwtb3BhY2l0eT0ibnVsbCIgc3Ryb2tlLW9wYWNpdHk9Im51bGwiCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzU1NSIgZmlsbD0ibm9uZSIvPgogICAgPHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDQ3Ljk4NTQ1ODM3NDAyMzQ0NSw4LjgwMTg5ODAwMjYyNDUxKSAiIGlkPSJzdmdfMTkiCiAgICAgICAgICBkPSJtNDcuNjAwODQyLDkuMTg2NTE0bDAsLTAuNzY5MjNsMC43NjkyMywwLjc2OTIzbC0wLjc2OTIzLDB6IiBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIgogICAgICAgICAgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM1NTUiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
+.md-hover-tip .code-tooltip-content {
+    background: var(--code-block-bg-color);
+}
+
+/*角标*/
+sup.md-footnote {
+    background: transparent;
+    color: var(--as-link-color);
+}
+
+/*目录*/
+.md-toc {
+    font-size: 0.95rem;
+}
+
+/*Mac 的内容*/
+#toc-dropmenu.open {
+    background: var(--code-block-bg-color);
+}
+
+/*引用*/
+blockquote {
+    border: 0 solid var(--as-blockquote-border-color);
+    border-left: 2px solid var(--as-blockquote-border-color);
+    color: var(--as-blockquote-font-color);
+    padding: 0 1rem;
+}
+
+/*checkbox*/
+input {
+    /*position: relative !important;*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 8px;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+input:before {
+    content: '';
+    display: block;
+    box-sizing: content-box;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--as-title-color);
+    transition: 0.2s border-color ease;
+}
+
+input:checked:before {
+    border-color: var(--as-link-color);
+    transition: 0.5s border-color ease;
+}
+
+input:disabled:before {
+    border-color: #ccc;
+    background-color: #ccc;
+}
+
+input:after {
+    content: '';
+    display: block;
     position: absolute;
-    top: 10px;
-    left: 15px;
-    z-index: 5;
+    box-sizing: content-box;
+    top: 50%;
+    left: 50%;
+    transform-origin: 50% 50%;
+    background-color: var(--as-link-color);
+    width: 16px;
+    height: 16px;
+    border-radius: 100vh;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+input[type="checkbox"]:before {
+    border-radius: 4px;
+}
+
+input[type="checkbox"] + * {
+    margin-left: 10px;
+}
+
+input[type="checkbox"]:after {
+    width: 9px;
+    height: 16px;
+    border-radius: 0;
+    transform: translate(-50%, -85%) scale(0) rotate(45deg);
+    background-color: transparent;
+    box-shadow: 4px 4px 0 0 var(--as-link-color);
+}
+
+input[type="checkbox"]:checked:after {
+    -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
+    animation: toggleOnCheckbox 0.2s ease forwards;
+}
+
+input[type="radio"]:before {
+    border-radius: 100vh;
+}
+
+input[type="radio"]:after {
+    width: 16px;
+    height: 16px;
+    border-radius: 100vh;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+input[type="radio"]:checked:after {
+    -webkit-animation: toggleOnRadio 0.2s ease forwards;
+    animation: toggleOnRadio 0.2s ease forwards;
+}
+
+@-webkit-keyframes toggleOnCheckbox {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -85%) scale(0) rotate(45deg);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+    }
+    100% {
+        transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+    }
+}
+
+@keyframes toggleOnCheckbox {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -85%) scale(0) rotate(45deg);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+    }
+    100% {
+        transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+    }
+}
+
+@-webkit-keyframes toggleOnRadio {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+@keyframes toggleOnRadio {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+/*链接*/
+a {
+    font-weight: 700;
+    color: var(--as-link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--as-link-color);
+    text-decoration: underline;
+}
+
+pre {
+    font-family: var(--as-font-family-monospace);
+    border-radius: 0.4rem;
+    font-size: 0.95rem !important;
+    padding: 1rem;
+}
+
+/*yaml标签*/
+.md-meta-block {
+    background: var(--as-meta-block-bg-color) !important;
+    color: var(--as-meta-block-font-color);
+    margin: 1rem 0;
+    overflow: auto;
+}
+
+/*悬浮窗*/
+.modal-content {
+    background: var(--code-block-bg-color);
+}
+
+/*提示窗*/
+#md-notification {
+    background: var(--as-blockquote-border-color);
+}
+
+/*侧边栏列表*/
+#file-library-search-input {
+    background: transparent;
+}
+
+.pin-outline #outline-content .outline-active strong, .pin-outline .outline-active {
+    color: var(--as-link-color);
+}
+
+#typora-sidebar,
+#switch-file-list-btn {
+    background: var(--code-block-bg-color);
+}
+
+.info-panel-tab-title:hover {
+    background-color: var(--as-meta-block-bg-color);
+}
+
+.active-tab-files #info-panel-tab-file .info-panel-tab-border, .active-tab-outline #info-panel-tab-outline .info-panel-tab-border {
+    background: var(--as-link-color);
+}
+
+/*退出源码模式*/
+.typora-sourceview-on #toggle-sourceview-btn {
+    background: transparent;
+}
+
+
+/*.fa-caret-right:before {*/
+/*    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,0.5)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>') 50% / 2rem 2rem;*/
+/*    content: " ";*/
+/*    filter: invert(100%) sepia(94%) saturate(17%) hue-rotate(223deg) brightness(104%) contrast(98%);;*/
+/*    height: 1.25rem;*/
+/*    min-width: 1.25rem;*/
+/*    transform: rotate(180deg);*/
+/*    transition: transform 200ms linear;*/
+/*}*/
+/**
+* 菜单页面
+*/
+
+/*菜单右侧背景*/
+.megamenu-opened header {
+    background: var(--bg-color);
+}
+
+.megamenu-content {
+    background: var(--bg-color);
+}
+
+/*最近使用文件单数列表项*/
+.open > .dropdown-menu {
+    background: var(--code-block-bg-color);
+}
+
+#recent-file-panel-action-btn-container {
+    margin-top: 10px;
+}
+
+#recent-file-panel-action-btn {
+    background: transparent;
+}
+
+.megamenu-menu-panel .btn:hover {
+    color: var(--as-inline-code-color);
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: var(--code-block-bg-color);
+}
+
+/*偏好设置*/
+.nav-group-item.active {
+    background: var(--as-nav-group-item-bg-color) !important;
+}
+
+/*代码块*/
+.md-fences {
+    background-color: var(--code-block-bg-color);
 }
 
 .md-fences:hover::after {
     content: attr(lang);
+    transition-duration: 200ms;
     color: var(--text-color);
     font-size: .8rem;
     font-style: italic;
@@ -554,386 +716,104 @@ sup.md-footnote {
     z-index: 5;
 }
 
-.md-fences .cm-s-inner {
-    cursor: text;
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 1px solid var(--text-color) !important;
 }
 
-.CodeMirror-code > div:active .CodeMirror-gutter-wrapper {
-    display: none;
+.cm-s-inner .CodeMirror-gutters {
+    color: #404b53;
+    background-color: transparent;
+    border: none
 }
 
-.CodeMirror-gutters {
-    background: var(--code-block-bg-color);
-    border-right: 0
+.cm-s-inner .CodeMirror-cursor {
+    border-left: solid thin #f8f8f0
 }
 
-.CodeMirror-guttermarker {
-    color: #ac4142
+.cm-s-inner .CodeMirror-linenumber {
+    color: #6d8a88
 }
 
-.CodeMirror-guttermarker-subtle {
-    color: #b0b0b0
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+    background: rgba(255, 255, 255, .1)
 }
 
-.CodeMirror-linenumber {
-    color: #b0b0b0
+.cm-s-inner .CodeMirror-line::selection, .cm-s-inner .CodeMirror-line > span::selection, .cm-s-inner .CodeMirror-line > span > span::selection {
+    background: rgba(255, 255, 255, .1)
 }
 
-.CodeMirror-cursor {
-    height: 1.5rem !important;
-    border-left: 1px solid var(--border-color) !important;
-}
-
-.cm-s-inner span.cm-header {
-    color: #e06c75
-}
-
-.cm-s-inner span.cm-quote {
-    color: #5c6370;
-    font-style: italic
-}
-
-.cm-s-inner span.cm-negative {
-    color: #e06c75
-}
-
-.cm-s-inner span.cm-positive {
-    color: #e06c75
-}
-
-.cm-s-inner span.cm-strong {
-    color: #d19a66;
-    font-weight: 700
-}
-
-.cm-s-inner span.cm-header .cm-strong {
-    color: #d19a66;
-    font-weight: 700
-}
-
-.cm-s-inner span.cm-em {
-    color: #c678dd;
-    font-style: italic
-}
-
-.cm-s-inner span.cm-header .cm-em {
-    color: #c678dd;
-    font-style: italic
-}
-
-.cm-s-inner span.cm-tag {
-    color: #e06c75
-}
-
-.cm-s-inner span.cm-attribute {
-    color: #d19a66
-}
-
-.cm-s-inner span.cm-link {
-    color: #98c379;
-    border-bottom: solid 1px #98c379
-}
-
-.cm-s-inner span.cm-builtin {
-    color: #e06c75
-}
-
-.cm-s-inner span.cm-keyword {
-    color: #c678dd
-}
-
-.cm-s-inner span.cm-def {
-    color: #e5c07b
-}
-
-.cm-s-inner span.cm-atom {
-    color: #d19a66
-}
-
-.cm-s-inner span.cm-number {
-    color: #d19a66
-}
-
-.cm-s-inner span.cm-property {
-    color: #56b6c2
-}
-
-.cm-s-inner span.cm-qualifier {
-    color: #d19a66
-}
-
-.cm-s-inner span.cm-variable {
-    color: #e06c75
-}
-
-.cm-s-inner span.cm-string {
-    color: #98c379
-}
-
-.cm-s-inner span.cm-punctuation {
-    color: #abb2bf
-}
-
-.cm-s-inner span.cm-operator {
-    color: #56b6c2
-}
-
-.cm-s-inner span.cm-meta {
-    color: #abb2bf
-}
-
-.cm-s-inner span.cm-bracket {
-    color: #abb2bf
+.cm-s-inner .CodeMirror-line::-moz-selection, .cm-s-inner .CodeMirror-line > span::-moz-selection, .cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+    background: rgba(255, 255, 255, .1)
 }
 
 .cm-s-inner span.cm-comment {
-    color: #5c6370;
-    font-style: italic
+    color: #41535b
 }
 
-.cm-s-inner span.cm-error {
-    color: #e06c75
+.cm-s-inner span.cm-string, .cm-s-inner span.cm-string-2 {
+    color: #55b5db
 }
 
-.cm-s-inner span.cm-m-css.cm-variable {
-    color: #828997
+.cm-s-inner span.cm-number {
+    color: #cd3f45
 }
 
-.cm-s-inner span.cm-m-css.cm-property {
-    color: #abb2bf
+.cm-s-inner span.cm-variable {
+    color: #55b5db
 }
 
-.cm-s-inner span.cm-m-css.cm-atom {
-    color: #56b6c2
+.cm-s-inner span.cm-variable-2 {
+    color: #a074c4
 }
 
-.cm-s-inner span.cm-m-css.cm-builtin {
-    color: #56b6c2
+.cm-s-inner span.cm-def {
+    color: #55b5db
 }
 
-.cm-s-inner span.cm-m-lua.cm-variable {
-    color: #56b6c2
+.cm-s-inner span.cm-keyword {
+    color: #ff79c6
 }
 
-#write .ty-input {
-    cursor: text;
-    text-align: justify;
-    font-size: 14px;
-    outline: none;
-    border: 0;
+.cm-s-inner span.cm-operator {
+    color: #9fca56
 }
 
-.code-tooltip {
-    border: var(--window-border);
+.cm-s-inner span.cm-keyword {
+    color: #e6cd69
 }
 
-#ty-auto-suggest, #fences-auto-suggest, .auto-suggest-container {
-    background-color: var(--code-block-bg-color);
-    color: var(--text-color);
-    border: var(--window-border);
+.cm-s-inner span.cm-atom {
+    color: #cd3f45
 }
 
-#math-inline-preview-content, .md-tooltip-remove {
-    z-index: 3;
-    border: 1px solid var(--border-color) !important;
-    padding-top: 10px !important;
-    background: var(--code-block-bg-color) !important;
+.cm-s-inner span.cm-meta {
+    color: #55b5db
 }
 
-/*Inline Elements*/
-code {
-    font-family: var(--code-font-family);
-    color: var(--main-text-color);
-    background-color: var(--code-bg-color);
-    padding: 0 .4rem;
-    margin: 0 .3rem;
-    font-weight: 300;
-    border-left: 1px dashed var(--border-color);
-    border-right: 1px dashed var(--border-color);
+.cm-s-inner span.cm-tag {
+    color: #55b5db
 }
 
-strong {
-    color: var(--main-text-color);
-    font-weight: 600;
+.cm-s-inner span.cm-attribute {
+    color: #9fca56
 }
 
-em {
-
+.cm-s-inner span.cm-qualifier {
+    color: #9fca56
 }
 
-#write a, #write a:link, #write a:visited {
-    color: var(--link-color);
-    text-decoration: none;
+.cm-s-inner span.cm-property {
+    color: #a074c4
 }
 
-#write a:link:active,
-#write a:link:focus,
-#write a:link:hover,
-#write a:visited:active,
-#write a:visited:focus,
-#write a:visited:hover,
-#write a:focus,
-#write a:hover {
-    text-decoration: underline;
+.cm-s-inner span.cm-type, .cm-s-inner span.cm-variable-3 {
+    color: #9fca56
 }
 
-img {
-
+.cm-s-inner span.cm-builtin {
+    color: #9fca56
 }
 
-
-mark {
-    background-color: var(--link-color);
-    padding: 0 .4rem;
-    margin: 0 .3rem;
-    font-weight: 500;
-    color: var(--contra-link-color);
-}
-
-del {
-
-}
-
-sub, sup {
-    color: var(--main-text-color);
-}
-
-
-/********/
-/*Others*/
-/********/
-::-webkit-scrollbar-thumb {
-    background: rgba(79, 168, 212, 0.8);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(79, 168, 212, 0.5);
-}
-
-::-webkit-scrollbar-thumb:active {
-    background: rgba(79, 168, 212, 0.7);
-}
-
-.md-hover-tip .md-arrow:after {
-    background: var(--border-color);
-}
-
-#typora-sidebar {
-    border-right: 1px solid var(--text-color);
-}
-
-.sidebar-tabs {
-    border-bottom: 1px solid var(--text-color) !important;
-}
-
-#math-inline-preview-content, .md-tooltip-remove {
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    padding-top: 10px !important;
-    background: var(--code-block-bg-color) !important;
-}
-
-
-#ty-tooltip {
-    background: var(--code-block-bg-color);
-    border: 1px dashed var(--border-color);
-    color: var(--text-color);
-}
-
-.modal-content {
-    border: 2px solid var(--border-color);
-}
-
-.file-tree-node.active > .file-node-background, .typora-sourceview-on #toggle-sourceview-btn {
-    background: var(--item-hover-bg-color);
-}
-
-#typora-quick-open {
-    background-color: var(--code-block-bg-color);
-    border: var(--window-border);
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    scrollbar-face-color: var(--border-color);
-}
-
-#typora-quick-open #typora-quick-open-input, #typora-quick-open-input input {
-    background-color: var(--code-block-bg-color);
-}
-
-/*
-Megamenu menu unibody-window TODO: ***
-*/
-/*megamenu-menu-list*/
-@media (prefers-color-scheme: dark) {
-    #megamenu-menu-sidebar {
-        background: var(--code-block-bg-color);
-    }
-
-    .megamenu-menu-list li a.active, .megamenu-menu-list:not(.saved) li a:hover {
-        background: var(--bg-color) !important;
-    }
-}
-
-#megamenu-content, .megamenu-menu, .megamenu-section, .unibody-window header {
-    background-color: var(--bg-color);
-    color: var(--main-text-color);
-    background-image: none !important;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title:before,
-.megamenu-menu-header #megamenu-menu-header-title {
-    color: var(--main-text-color);
-}
-
-.megamenu-menu-list {
-    border: 0;
-}
-
-.unibody-window select {
-    background: var(--bg-color);
-}
-
-.unibody-window .long-btn {
-    color: var(--text-color);
-}
-
-.megamenu-menu-list:not(.saved) li a:hover, .megamenu-menu-list li a.active {
-    background: var(--code-block-bg-color);
-    color: var(--text-color);
-}
-
-.megamenu-section a {
-    color: var(--link-color);
-    text-decoration: none;
-}
-
-/*Menu-Open*/
-#recent-file-panel tbody tr:nth-child(2n-1), #recent-file-panel-action-btn {
-    background-color: inherit;
-}/*ver 0.2.0 mlike-dark*/
-/*Need `mlike.css`*/
-@import "";
-
-:root {
-    /*Background color*/
-    --bg-color: #000000;
-    --side-bar-bg-color: #000000;
-    /*Text color*/
-    --text-color: #f5f5f5;
-    --main-text-color: #ffffff;
-    /*Code block bg color*/
-    --code-block-bg-color: #282c34;
-    --code-bg-color: rgba(255, 255, 255, 0.2);
-}
-
-/*DarkTheme mlike@653*/
-#megamenu-menu-sidebar {
-    background: var(--code-block-bg-color);
-}
-
-.megamenu-menu-list li a.active, .megamenu-menu-list:not(.saved) li a:hover {
-    background: var(--bg-color) !important;
-}
 
 
 mjx-container[jax="SVG"] {
@@ -1084,10 +964,10 @@ g[data-mml-node="xypic"] path {
 mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 							stroke-width: 0;
 						}
-</style><title>2024-8-31</title>
+</style><title>2024-11-17</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='工具'><span>工具</span></h1><p><a href='https://yingheapp.com'><span>硬核</span></a><a href='https://硬核指南.com'><span>指南</span></a></p><p><a href='http://doc.qianqian.club'><span>千千软件</span></a></p><h2 ><span>数学</span></h2><p><a href='https://www.desmos.com/'><span>Desmos（函数图象）</span></a></p><p><a href='https://www.jisuan.mobi/'><span>计算专家</span></a></p><blockquote><p><a href='https://www.jisuan.mobi/pzumzb16uuB1ByUQ.html'><span>质数生成计算器</span></a></p></blockquote><p><a href='http://factordb.com/'><span>因数分解</span></a></p><p><a href='https://zh.numberempire.com/?tdsourcetag=s_pctim_aiomsg'><span>数字帝国 - 数学工具</span></a></p><blockquote><p><a href='https://zh.numberempire.com/factoringcalculator.php'><span>因式分解工具</span></a></p></blockquote><p><a href='https://www.wolframalpha.com/'><span>Wolfram|Alpha: Computational Intelligence（计算智能）</span></a></p><p><a href='http://oeis.org/?language=chineseS'><span>整数数列线上大全</span></a></p><p><a href='https://www.johndcook.com/expsum/'><span>Exponential sum of the day</span></a></p><p><a href='https://nihe.91maths.com/'><span>拟合函数图像</span></a></p><p><a href='http://home.ustc.edu.cn/~zzzz/lifegame/index.html'><span>生命游戏</span></a></p><p><a href='https://lab.magiconch.com/homo/'><span>恶臭数字论证器</span></a></p><p><a href='https://geogebra.org'><span>geogebra</span></a></p><p><a href='https://euclidea.xyz'><span>尺规作图练习</span></a></p><h2 id='翻墙'><span>翻墙</span></h2><p><a href='https://bulink.xyz' target='_blank' class='url'>https://bulink.xyz</a></p><p><a href='https://github.com/hugetiny/awesome-vpn/blob/master/READMECN.md' target='_blank' class='url'>https://github.com/hugetiny/awesome-vpn/blob/master/READMECN.md</a></p><p><a href='https://qingfenghangzhou.com/cn/#zero'><span>佛跳墙</span></a></p><p><a href='https://github.com/freefq/free'><span>freefq</span></a></p><p><a href='https://github.com/Fndroid/clash_for_windows_pkg/releases'><span>clash for windows</span></a></p><p><a href='https://cjh0613.com/GoogleMirror'><span>google镜像</span></a></p><p><a href='www.ccbaohe.com'><span>CC宝盒</span></a></p><h2 id='翻译'><span>翻译</span></h2><p><a href='https://www.deepl.com'><span>Deepl</span></a></p><p><a href='https://lab.magiconch.com/nbnhhsh/'><span>拼音首字母缩写释义工具</span></a></p><p><a href='http://www.atoolbox.net/Tool.php?Id=703'><span>AAEncode（JavaScript转颜文字）</span></a></p><p><a href='https://www.yunyoujun.cn/char-dust/'><span>图片转字符阵</span></a></p><p><a href='https://hashdown.github.io/edit.html'><span>hashdown</span></a></p><p><a href='https://copytranslator.github.io/download/'><span>Copytranslator</span></a></p><h2 id='反极域与控制'><span>反极域与控制</span></h2><p><a href='https://github.com/ht0Ruial/Jiyu_udp_attack'><span>Jiyu_udp_attack</span></a></p><h2 id='激活'><span>激活</span></h2><p><a href='http://kmspico.micaesoft.com/'><span>kmspico</span></a></p><p><a href='https://otp.landian.vip/zh-cn/'><span>Officetool</span></a></p><h2 id='聊天'><span>聊天</span></h2><p><a href='http://zuanbot.com/'><span>骂人宝典</span></a></p><p><a href='http://www.gjw123.com/tools-weixinduihua2019'><span>微信对话生成器</span></a></p><p><a href='https://shadiao.app'><span>沙雕网</span></a></p><p><a href='https://github.com/huiyadanli/RevokeMsgPatcher'><span>防撤回</span></a></p><p><a href='https://filehelper.weixin.qq.com/?from=windows&amp;type=recommend'><span>微信文件传输助手网页版</span></a></p><h2 id='浏览器'><span>浏览器</span></h2><p><a href='https://www.wuzhuiso.com/'><span>无追搜索</span></a></p><p><a href='https://searx.tiekoetter.com'><span>Sear搜索</span></a></p><h2 id='录屏'><span>录屏</span></h2><p><a href='https://www.apowersoft.cn/free-online-screen-recorder'><span>在线录屏</span></a></p><blockquote><p><a href='https://ouweiya.github.io/Web-recording-screen/'><span>同类网站</span></a></p></blockquote><h2 id='隐藏窗口'><span>隐藏窗口</span></h2><p><a href='https://vitrite.en.softonic.com/'><span>vitrite</span></a></p><h2 id='杀毒清理'><span>杀毒&amp;清理</span></h2><p><a href='https://s.threatbook.cn/'><span>云沙箱</span></a></p><p><a href='https://geekuninstaller.com/'><span>Geek Uninstaller</span></a></p><h2 id='数据恢复'><span>数据恢复</span></h2><p><a href='http://www.mytju.com/classcode/tools/messycoderecover.asp'><span>乱码恢复</span></a></p><p><a href='https://huifu.hgs.cn/'><span>嗨格式数据恢复大师【需要vip】</span></a></p><p><a href='https://wps.cn'><span>金山数据恢复大师（集成在WPS内）</span></a></p><p><a href='https://www.disktool.cn/recovery/winfr.html'><span>WinFR界面版</span></a></p><h2 id='图片'><span>图片</span></h2><p><a href='https://www.unscreen.com/'><span>抠视频和图片</span></a></p><p><a href='www.pohtopea.com'><span>在线PS</span></a></p><p><a href='https://wallpapers.microsoft.design'><span>壁纸</span></a></p><blockquote><p><a href='https://wallhaven.cc/'><span>Wallhaven</span></a>
+<div id='write'  class=''><h1 id='工具'><span>工具</span></h1><p><a href='https://yingheapp.com'><span>硬核</span></a><a href='https://硬核指南.com'><span>指南</span></a></p><p><a href='http://doc.qianqian.club'><span>千千软件</span></a></p><h2 id='数学'><span>数学</span></h2><p><a href='https://www.desmos.com/'><span>Desmos（函数图象）</span></a></p><p><a href='https://www.jisuan.mobi/'><span>计算专家</span></a></p><blockquote><p><a href='https://www.jisuan.mobi/pzumzb16uuB1ByUQ.html'><span>质数生成计算器</span></a></p></blockquote><p><a href='http://factordb.com/'><span>因数分解</span></a></p><p><a href='https://zh.numberempire.com/?tdsourcetag=s_pctim_aiomsg'><span>数字帝国 - 数学工具</span></a></p><blockquote><p><a href='https://zh.numberempire.com/factoringcalculator.php'><span>因式分解工具</span></a></p></blockquote><p><a href='https://www.wolframalpha.com/'><span>Wolfram|Alpha: Computational Intelligence（计算智能）</span></a></p><p><a href='http://oeis.org/?language=chineseS'><span>整数数列线上大全</span></a></p><p><a href='https://www.johndcook.com/expsum/'><span>Exponential sum of the day</span></a></p><p><a href='https://nihe.91maths.com/'><span>拟合函数图像</span></a></p><p><a href='http://home.ustc.edu.cn/~zzzz/lifegame/index.html'><span>生命游戏</span></a></p><p><a href='https://lab.magiconch.com/homo/'><span>恶臭数字论证器</span></a></p><p><a href='https://geogebra.org'><span>geogebra</span></a></p><p><a href='https://euclidea.xyz'><span>尺规作图练习</span></a></p><p><a href='https://github.com/KaiserKatze/mathematical-notes'><span>一份数学笔记</span></a></p><h2 id='fq'><span>FQ</span></h2><p><a href='https://bulink.xyz' target='_blank' class='url'>https://bulink.xyz</a></p><p><a href='https://github.com/hugetiny/awesome-vpn/blob/master/READMECN.md' target='_blank' class='url'>https://github.com/hugetiny/awesome-vpn/blob/master/READMECN.md</a></p><p><a href='https://qingfenghangzhou.com/cn/#zero'><span>佛跳墙</span></a></p><p><a href='https://github.com/freefq/free'><span>freefq</span></a></p><p><a href='https://github.com/Fndroid/clash_for_windows_pkg/releases'><span>clash for windows</span></a></p><p><a href='https://cjh0613.com/GoogleMirror'><span>google镜像</span></a></p><p><a href='www.ccbaohe.com'><span>CC宝盒</span></a></p><h2 id='翻译'><span>翻译</span></h2><p><a href='https://www.deepl.com'><span>Deepl</span></a></p><p><a href='https://lab.magiconch.com/nbnhhsh/'><span>拼音首字母缩写释义工具</span></a></p><p><a href='http://www.atoolbox.net/Tool.php?Id=703'><span>AAEncode（JavaScript转颜文字）</span></a></p><p><a href='https://www.yunyoujun.cn/char-dust/'><span>图片转字符阵</span></a></p><p><a href='https://hashdown.github.io/edit.html'><span>hashdown</span></a></p><p><a href='https://copytranslator.github.io/download/'><span>Copytranslator</span></a></p><h2 id='反极域与控制'><span>反极域与控制</span></h2><p><a href='https://github.com/ht0Ruial/Jiyu_udp_attack'><span>Jiyu_udp_attack</span></a></p><h2 id='激活'><span>激活</span></h2><p><a href='http://kmspico.micaesoft.com/'><span>kmspico</span></a></p><p><a href='https://otp.landian.vip/zh-cn/'><span>Officetool</span></a></p><h2 id='聊天'><span>聊天</span></h2><p><a href='http://zuanbot.com/'><span>骂人宝典</span></a></p><p><a href='http://www.gjw123.com/tools-weixinduihua2019'><span>微信对话生成器</span></a></p><p><a href='https://shadiao.app'><span>沙雕网</span></a></p><p><a href='https://github.com/huiyadanli/RevokeMsgPatcher'><span>防撤回</span></a></p><p><a href='https://filehelper.weixin.qq.com/?from=windows&amp;type=recommend'><span>微信文件传输助手网页版</span></a></p><h2 id='浏览器'><span>浏览器</span></h2><p><a href='https://www.wuzhuiso.com/'><span>无追搜索</span></a></p><p><a href='https://searx.tiekoetter.com'><span>Sear搜索</span></a></p><h2 id='录屏'><span>录屏</span></h2><p><a href='https://www.apowersoft.cn/free-online-screen-recorder'><span>在线录屏</span></a></p><blockquote><p><a href='https://ouweiya.github.io/Web-recording-screen/'><span>同类网站</span></a></p></blockquote><h2 id='隐藏窗口'><span>隐藏窗口</span></h2><p><a href='https://vitrite.en.softonic.com/'><span>vitrite</span></a></p><h2 id='杀毒清理'><span>杀毒&amp;清理</span></h2><p><a href='https://s.threatbook.cn/'><span>云沙箱</span></a></p><p><a href='https://geekuninstaller.com/'><span>Geek Uninstaller</span></a></p><h2 id='数据恢复'><span>数据恢复</span></h2><p><a href='http://www.mytju.com/classcode/tools/messycoderecover.asp'><span>乱码恢复</span></a></p><p><a href='https://huifu.hgs.cn/'><span>嗨格式数据恢复大师【需要vip】</span></a></p><p><a href='https://wps.cn'><span>金山数据恢复大师（集成在WPS内）</span></a></p><p><a href='https://www.disktool.cn/recovery/winfr.html'><span>WinFR界面版</span></a></p><h2 id='图片'><span>图片</span></h2><p><a href='https://www.unscreen.com/'><span>抠视频和图片</span></a></p><p><a href='www.pohtopea.com'><span>在线PS</span></a></p><p><a href='https://wallpapers.microsoft.design'><span>壁纸</span></a></p><blockquote><p><a href='https://wallhaven.cc/'><span>Wallhaven</span></a>
 <a href='https://wallhere.com/'><span>Wallhere</span></a>
 <a href='https://desk.3gbizhi.com/'><span>3G壁纸</span></a>
 <a href='http://bimg.top/'><span>必应壁纸</span></a><span> </span><a href='http://bing.ioliu.cn'><span>必应壁纸2</span></a>
@@ -1111,8 +991,8 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 <a href='https://vip.bljiex.com/'><span>解析&amp;搜索&amp;直播</span></a>
 <a href='https://www.bilibili.com'><span>B站</span></a></p></blockquote><p><a href='http://urlebird.com'><span>TikTok</span></a></p><p><a href='https://github.com/the1812/Bilibili-Evolved'><span>Bilibili-Evolved</span></a></p><p><a href='https://www.linerider.com/'><span>Liner Rider</span></a><span> </span></p><p><a href='https://tophub.today/'><span>今日热榜</span></a></p><p><a href='https://fanqienovel.com/'><span>番茄小说</span></a></p><p><a href='https://www.soman.com/'><span>搜漫</span></a></p><p><a href='https://shadiao.plus/'><span>沙雕新闻</span></a></p><p><a href='https://m3u8-player.com/'><span>M3U8-Player</span></a></p><p><a href='https://v.hi.sy/'><span>AllTube Download</span></a></p><p><a href='https://github.com/iptv-org/iptv'><span>iptv</span></a></p><p><a href='http://m.ysepan.com/gbtgame#/'><span>GBT乐赏游戏空间</span></a></p><p><a href='https://itmastergame.com/gameList/xiangQi/v1160/web-mobile/index.html'><span>wnxq</span></a></p><p><a href='https://sao.fm/'><span>思奥音乐</span></a></p><p><a href='http://game4.baifumeiba.com/minigame/knyds/'><span>看你多色</span></a></p><p><a href='https://cover.h5551.com/'><span>B站封面提取</span></a></p><h2 id='字体'><span>字体</span></h2><p><a href='https://lingojam.com/FancyTextGenerator'><span>𝔽𝕒𝕟𝕔𝕪 𝕋𝕖𝕩𝕥 𝔾𝕖𝕟𝕖𝕣𝕒𝕥𝕠𝕣（花式英文文本）</span></a></p><h2 id='其他'><span>其他</span></h2><p><a href='http://www.gjw123.com/'><span>在线工具</span></a></p><blockquote><p><a href='http://tiomg.org'><span>同类网站</span></a>
 <a href='http://www.67tool.com'><span>同类网站</span></a>
-<a href='https://www.67tool.com/'><span>即时工具</span></a></p></blockquote><p><a href='http://sina.lt'><span>短网址生成</span></a></p><p><a href='https://www.linshiyouxiang.net/'><span>临时邮箱</span></a></p><blockquote><p><a href='http://mail.td'><span>同类网站</span></a></p></blockquote><p><a href='http://s.ecnupress.com.cn/jjfs/06/list.aspx'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="20ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 8840 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle" fill="red" stroke="red"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">华</text></g><g data-mml-node="mtext" transform="translate(884,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">师</text></g><g data-mml-node="mtext" transform="translate(1768,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">大</text></g><g data-mml-node="mtext" transform="translate(2652,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">版</text></g><g data-mml-node="mtext" transform="translate(3536,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">电</text></g><g data-mml-node="mtext" transform="translate(4420,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">子</text></g><g data-mml-node="mtext" transform="translate(5304,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">教</text></g><g data-mml-node="mtext" transform="translate(6188,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">材</text></g><g data-mml-node="mtext" transform="translate(7072,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">下</text></g><g data-mml-node="mtext" transform="translate(7956,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">载</text></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle mathcolor="red"><mtext>华</mtext><mtext>师</mtext><mtext>大</mtext><mtext>版</mtext><mtext>电</mtext><mtext>子</mtext><mtext>教</mtext><mtext>材</mtext><mtext>下</mtext><mtext>载</mtext></mstyle></math></mjx-assistive-mml></mjx-container><script type="math/tex">\color{red}华师大版电子教材下载</script></a></p><p><a href='https://www.luogu.com.cn/discuss/show/308021'><span>愚人节</span></a></p><p><a href='https://nobook.com'><span>nobook</span></a></p><blockquote><p><a href='https://bulaji233.github.io/Tool/NoBook/'><span>漏洞</span></a></p></blockquote><p><a href='https://topbook.cc'><span>topbook|高效生活视频书</span></a></p><p><a href='https://www.bcy.net/'><span>半次元</span></a></p><p><a href='https://dh.woshipm.com'><span>导航网站</span></a></p><blockquote><p><a href='http://chuangzaoshi.com/index'><span>同类网站</span></a>
-<a href='http://xiutongxue.ysepan.com/'><span>网址导航++</span></a></p></blockquote><p><a href='http://www.dajiadaohang.com/'><span>国家部门集合网站——打假导航</span></a></p><p><a href='https://zhutix.com/'><span>致美化</span></a></p><p><a href='https://shudan.vip'><span>书单网</span></a></p><p><a href='https://yunduanxin.net'><span>临时手机号</span></a></p><p><a href='https://dzkbw.com'><span>电子课本</span></a></p><p><a href='https://heji.ru/'><span>合集</span></a></p><p><a href='https://wantwords.thunlp.org/home/'><span>万词王</span></a></p><p><a href='https://hyperbeam.com/'><span>Hyperbeam</span></a></p><p><a href='https://colors.eva.design/'><span>配色</span></a></p><p><a href='http://met.red'><span>IP定位</span></a></p><p><a href='https://l.show/'><span>个人名片</span></a></p><p><a href='https://chrome.zzzmh.cn/'><span>极简插件网</span></a></p><p><a href='https://www.bypass.cn'><span>Bypass-分流抢票</span></a></p><p><a href='https://www.itab.link'><span>itab浏览器标签插件</span></a></p><p><a href='http://www.nlc.cn/dsb_zyyfw/sytc/sp/'><span>中国国家图书馆</span></a></p><p><a href='http://www.12348.gov.cn/'><span>中国法律服务网</span></a></p><p><a href='http://data.people.com.cn/rmrb/'><span>人民日报</span></a></p><p><a href='http://formatfactory.org/'><span>格式工厂</span></a></p><p><a href='https://www.paperyy.com/'><span>论文查重</span></a></p><p><a href='http://www.xysudu.com/'><span>小鱼速读</span></a></p><p><a href='https://findtheinvisiblecow.com/'><span>找到隐藏的牛</span></a></p><p><a href='https://vocalremover.org/ch/'><span>人声消除免费网站</span></a></p><p><a href='https://www.passwordmonster.com/'><span>密码检测</span></a></p><p><a href='https://koodo.960960.xyz/zh'><span>电子书阅读器</span></a></p><p><a href='https://alipan.vip'><span>阿里云盘资源网站</span></a></p><blockquote><p><a href='https://alyunpan.com/'><span>阿里资源分享</span></a></p></blockquote><p><a href='http://www.1ppt.com/'><span>PPT资源</span></a></p><p><a href='http://www.aigei.com'><span>短视频、游戏、配乐素材</span></a></p><p><a href='https://basic.smartedu.cn/'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="22ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 9724 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle" fill="red" stroke="red"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">国</text></g><g data-mml-node="mtext" transform="translate(884,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">家</text></g><g data-mml-node="mtext" transform="translate(1768,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">中</text></g><g data-mml-node="mtext" transform="translate(2652,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">小</text></g><g data-mml-node="mtext" transform="translate(3536,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">学</text></g><g data-mml-node="mtext" transform="translate(4420,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">智</text></g><g data-mml-node="mtext" transform="translate(5304,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">慧</text></g><g data-mml-node="mtext" transform="translate(6188,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">教</text></g><g data-mml-node="mtext" transform="translate(7072,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">育</text></g><g data-mml-node="mtext" transform="translate(7956,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">平</text></g><g data-mml-node="mtext" transform="translate(8840,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">台</text></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle mathcolor="red"><mtext>国</mtext><mtext>家</mtext><mtext>中</mtext><mtext>小</mtext><mtext>学</mtext><mtext>智</mtext><mtext>慧</mtext><mtext>教</mtext><mtext>育</mtext><mtext>平</mtext><mtext>台</mtext></mstyle></math></mjx-assistive-mml></mjx-container><script type="math/tex">\color{red}国家中小学智慧教育平台</script></a></p><p><a href='https://bkfeng.top/'><span>本卡风学习资料</span></a></p><blockquote><p><a href='https://www.xue8nav.com/'><span>自学资源导航——学吧导航</span></a></p></blockquote><p><a href='https://www.sixyin.com/'><span>软件网站</span></a></p><p><a href='http://77ebooks.com'><span>77ebooks</span></a></p><blockquote><p><a href='http://shuxiangjia.cn/'><span>书享家</span></a></p></blockquote><p><a href='https://bt1207na.xyz/'><span>BT种子搜索</span></a></p><p><a href='https://www.bdzy.com'><span>百度云资源</span></a></p><p><a href='https://www.so.com/link?m=brf6m04%2FUD9O2Sjv2NznGKqk3qzysbTJPKLsYO%2FeeJtkzBL8uzG3X7JppAQCiFzJleYQ5dko8MZDxdefte7GacHZotc%2BIFSfDpQ3ODI5z78I9PlCXMtzcoh%2FTW9ZkMOagX5QdMsYzA%2BI%3D'><span>虫部落</span></a></p><p><a href='http://91bt.fun/'><span>磁力资源</span></a></p><p><a href='https://sunpma.com/'><span>一个或许有用的网站</span></a></p><p><a href='https://www.ygdy8.net/index.html'><span>电影资源</span></a></p><blockquote><p><a href='https://dytt8.net/index2.htm'><span>同类网站</span></a></p></blockquote><p><a href='https://docs.qq.com/sheet/DRU5MWHZCTHFGQnhM'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="18ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 7956 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle" fill="red" stroke="red"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">全</text></g><g data-mml-node="mtext" transform="translate(884,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">网</text></g><g data-mml-node="mtext" transform="translate(1768,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">优</text></g><g data-mml-node="mtext" transform="translate(2652,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">质</text></g><g data-mml-node="mtext" transform="translate(3536,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">课</text></g><g data-mml-node="mtext" transform="translate(4420,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">程</text></g><g data-mml-node="mtext" transform="translate(5304,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">知</text></g><g data-mml-node="mtext" transform="translate(6188,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">识</text></g><g data-mml-node="mtext" transform="translate(7072,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">库</text></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle mathcolor="red"><mtext>全</mtext><mtext>网</mtext><mtext>优</mtext><mtext>质</mtext><mtext>课</mtext><mtext>程</mtext><mtext>知</mtext><mtext>识</mtext><mtext>库</mtext></mstyle></math></mjx-assistive-mml></mjx-container><script type="math/tex">\color{red}全网优质课程知识库</script></a></p><p><a href='https://u.gitcafe.net'><span>小纸条资源分享网站</span></a></p><p><a href='https://www.officeplus.cn/'><span>Office模板资源站</span></a></p><p><a href='https://zh.z-lib.org/'><span>全球最大的数字图书馆</span></a></p><blockquote><p><a href='https://zh.b-ok.com/'><span>备用域名1</span></a>
+<a href='https://www.67tool.com/'><span>即时工具</span></a></p></blockquote><p><a href='http://sina.lt'><span>短网址生成</span></a></p><p><a href='https://www.linshiyouxiang.net/'><span>临时邮箱</span></a></p><blockquote><p><a href='http://mail.td'><span>同类网站</span></a></p></blockquote><p><a href='http://s.ecnupress.com.cn/jjfs/06/list.aspx'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="19.675ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 8696.3 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle" fill="red" stroke="red"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">华</text></g><g data-mml-node="mtext" transform="translate(869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">师</text></g><g data-mml-node="mtext" transform="translate(1739.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">大</text></g><g data-mml-node="mtext" transform="translate(2608.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">版</text></g><g data-mml-node="mtext" transform="translate(3478.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">电</text></g><g data-mml-node="mtext" transform="translate(4348.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">子</text></g><g data-mml-node="mtext" transform="translate(5217.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">教</text></g><g data-mml-node="mtext" transform="translate(6087.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">材</text></g><g data-mml-node="mtext" transform="translate(6957,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">下</text></g><g data-mml-node="mtext" transform="translate(7826.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">载</text></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle mathcolor="red"><mtext>华</mtext><mtext>师</mtext><mtext>大</mtext><mtext>版</mtext><mtext>电</mtext><mtext>子</mtext><mtext>教</mtext><mtext>材</mtext><mtext>下</mtext><mtext>载</mtext></mstyle></math></mjx-assistive-mml></mjx-container><script type="math/tex">\color{red}华师大版电子教材下载</script></a></p><p><a href='https://www.luogu.com.cn/discuss/show/308021'><span>愚人节</span></a></p><p><a href='https://nobook.com'><span>nobook</span></a></p><blockquote><p><a href='https://bulaji233.github.io/Tool/NoBook/'><span>漏洞</span></a></p></blockquote><p><a href='https://topbook.cc'><span>topbook|高效生活视频书</span></a></p><p><a href='https://www.bcy.net/'><span>半次元</span></a></p><p><a href='https://dh.woshipm.com'><span>导航网站</span></a></p><blockquote><p><a href='http://chuangzaoshi.com/index'><span>同类网站</span></a>
+<a href='http://xiutongxue.ysepan.com/'><span>网址导航++</span></a></p></blockquote><p><a href='http://www.dajiadaohang.com/'><span>国家部门集合网站——打假导航</span></a></p><p><a href='https://zhutix.com/'><span>致美化</span></a></p><p><a href='https://shudan.vip'><span>书单网</span></a></p><p><a href='https://yunduanxin.net'><span>临时手机号</span></a></p><p><a href='https://dzkbw.com'><span>电子课本</span></a></p><p><a href='https://heji.ru/'><span>合集</span></a></p><p><a href='https://wantwords.thunlp.org/home/'><span>万词王</span></a></p><p><a href='https://hyperbeam.com/'><span>Hyperbeam</span></a></p><p><a href='https://colors.eva.design/'><span>配色</span></a></p><p><a href='http://met.red'><span>IP定位</span></a></p><p><a href='https://l.show/'><span>个人名片</span></a></p><p><a href='https://chrome.zzzmh.cn/'><span>极简插件网</span></a></p><p><a href='https://www.bypass.cn'><span>Bypass-分流抢票</span></a></p><p><a href='https://www.itab.link'><span>itab浏览器标签插件</span></a></p><p><a href='http://www.nlc.cn/dsb_zyyfw/sytc/sp/'><span>中国国家图书馆</span></a></p><p><a href='http://www.12348.gov.cn/'><span>中国法律服务网</span></a></p><p><a href='http://data.people.com.cn/rmrb/'><span>人民日报</span></a></p><p><a href='http://formatfactory.org/'><span>格式工厂</span></a></p><p><a href='https://www.paperyy.com/'><span>论文查重</span></a></p><p><a href='http://www.xysudu.com/'><span>小鱼速读</span></a></p><p><a href='https://findtheinvisiblecow.com/'><span>找到隐藏的牛</span></a></p><p><a href='https://vocalremover.org/ch/'><span>人声消除免费网站</span></a></p><p><a href='https://www.passwordmonster.com/'><span>密码检测</span></a></p><p><a href='https://koodo.960960.xyz/zh'><span>电子书阅读器</span></a></p><p><a href='https://alipan.vip'><span>阿里云盘资源网站</span></a></p><blockquote><p><a href='https://alyunpan.com/'><span>阿里资源分享</span></a></p></blockquote><p><a href='http://www.1ppt.com/'><span>PPT资源</span></a></p><p><a href='http://www.aigei.com'><span>短视频、游戏、配乐素材</span></a></p><p><a href='https://basic.smartedu.cn/'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="21.642ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 9565.9 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle" fill="red" stroke="red"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">国</text></g><g data-mml-node="mtext" transform="translate(869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">家</text></g><g data-mml-node="mtext" transform="translate(1739.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">中</text></g><g data-mml-node="mtext" transform="translate(2608.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">小</text></g><g data-mml-node="mtext" transform="translate(3478.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">学</text></g><g data-mml-node="mtext" transform="translate(4348.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">智</text></g><g data-mml-node="mtext" transform="translate(5217.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">慧</text></g><g data-mml-node="mtext" transform="translate(6087.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">教</text></g><g data-mml-node="mtext" transform="translate(6957,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">育</text></g><g data-mml-node="mtext" transform="translate(7826.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">平</text></g><g data-mml-node="mtext" transform="translate(8696.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">台</text></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle mathcolor="red"><mtext>国</mtext><mtext>家</mtext><mtext>中</mtext><mtext>小</mtext><mtext>学</mtext><mtext>智</mtext><mtext>慧</mtext><mtext>教</mtext><mtext>育</mtext><mtext>平</mtext><mtext>台</mtext></mstyle></math></mjx-assistive-mml></mjx-container><script type="math/tex">\color{red}国家中小学智慧教育平台</script></a></p><p><a href='https://bkfeng.top/'><span>本卡风学习资料</span></a></p><blockquote><p><a href='https://www.xue8nav.com/'><span>自学资源导航——学吧导航</span></a></p></blockquote><p><a href='https://www.sixyin.com/'><span>软件网站</span></a></p><p><a href='http://77ebooks.com'><span>77ebooks</span></a></p><blockquote><p><a href='http://shuxiangjia.cn/'><span>书享家</span></a></p></blockquote><p><a href='https://bt1207na.xyz/'><span>BT种子搜索</span></a></p><p><a href='https://www.bdzy.com'><span>百度云资源</span></a></p><p><a href='https://www.so.com/link?m=brf6m04%2FUD9O2Sjv2NznGKqk3qzysbTJPKLsYO%2FeeJtkzBL8uzG3X7JppAQCiFzJleYQ5dko8MZDxdefte7GacHZotc%2BIFSfDpQ3ODI5z78I9PlCXMtzcoh%2FTW9ZkMOagX5QdMsYzA%2BI%3D'><span>虫部落</span></a></p><p><a href='http://91bt.fun/'><span>磁力资源</span></a></p><p><a href='https://sunpma.com/'><span>一个或许有用的网站</span></a></p><p><a href='https://www.ygdy8.net/index.html'><span>电影资源</span></a></p><blockquote><p><a href='https://dytt8.net/index2.htm'><span>同类网站</span></a></p></blockquote><p><a href='https://docs.qq.com/sheet/DRU5MWHZCTHFGQnhM'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="17.707ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 7826.6 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle" fill="red" stroke="red"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">全</text></g><g data-mml-node="mtext" transform="translate(869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">网</text></g><g data-mml-node="mtext" transform="translate(1739.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">优</text></g><g data-mml-node="mtext" transform="translate(2608.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">质</text></g><g data-mml-node="mtext" transform="translate(3478.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">课</text></g><g data-mml-node="mtext" transform="translate(4348.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">程</text></g><g data-mml-node="mtext" transform="translate(5217.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">知</text></g><g data-mml-node="mtext" transform="translate(6087.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">识</text></g><g data-mml-node="mtext" transform="translate(6957,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">库</text></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle mathcolor="red"><mtext>全</mtext><mtext>网</mtext><mtext>优</mtext><mtext>质</mtext><mtext>课</mtext><mtext>程</mtext><mtext>知</mtext><mtext>识</mtext><mtext>库</mtext></mstyle></math></mjx-assistive-mml></mjx-container><script type="math/tex">\color{red}全网优质课程知识库</script></a></p><p><a href='https://u.gitcafe.net'><span>小纸条资源分享网站</span></a></p><p><a href='https://www.officeplus.cn/'><span>Office模板资源站</span></a></p><p><a href='https://zh.z-lib.org/'><span>全球最大的数字图书馆</span></a></p><blockquote><p><a href='https://zh.b-ok.com/'><span>备用域名1</span></a>
 <a href='https://zh.art1lib.com/'><span>备用域名2</span></a></p></blockquote><p><a href='https://toolight.cn/'><span>懒人工具箱</span></a></p><p><a href='https://www.alltoall.net/'><span>在线格式转换</span></a></p><p><a href='www.nlc.cn'><span>国家数字图书馆</span></a></p><p><a href='https://www.fxsound.com/blog/fxsound-is-now-completely-free'><span>FxSound音乐增强器</span></a></p><p><a href='https://ai.binwang.me/couplet/'><span>对对子</span></a></p><p><a href='https://gallerix.asia/'><span>网上博物馆</span></a></p><h2 id='等待处理'><span>等待处理</span></h2><p><a href='https://mp.weixin.qq.com/s/gJtGWh_CHRP3QavPLy0MIQ' target='_blank' class='url'>https://mp.weixin.qq.com/s/gJtGWh_CHRP3QavPLy0MIQ</a></p><p><a href='https://mp.weixin.qq.com/s/Poi_IMXUKgX5PYBv4f1F2w' target='_blank' class='url'>https://mp.weixin.qq.com/s/Poi_IMXUKgX5PYBv4f1F2w</a></p><p><a href='https://mp.weixin.qq.com/s/CRTDlh3S11z7bav7S4iZFw' target='_blank' class='url'>https://mp.weixin.qq.com/s/CRTDlh3S11z7bav7S4iZFw</a></p><p><a href='https://mp.weixin.qq.com/s/WksTzK07AOADdCnVM-trgw' target='_blank' class='url'>https://mp.weixin.qq.com/s/WksTzK07AOADdCnVM-trgw</a><span> </span></p><p><a href='https://www.lanzoux.com/b490276/' target='_blank' class='url'>https://www.lanzoux.com/b490276/</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247587426&amp;idx=1&amp;sn=6ff28fc7e838a531b69f56a695993830&amp;chksm=903892f3a74f1be5fc49bd774d7a7ed785c395a8e25123f8458ecdb862114494bb933195a995#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247587426&idx=1&sn=6ff28fc7e838a531b69f56a695993830&chksm=903892f3a74f1be5fc49bd774d7a7ed785c395a8e25123f8458ecdb862114494bb933195a995#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247587482&amp;idx=1&amp;sn=e03214d4de5e434378d9c8be20746493&amp;chksm=9038920ba74f1b1dfce0e5003044be3286eec9b1b57573cb89e0366e6601dcaab34c5b6b3daa#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247587482&idx=1&sn=e03214d4de5e434378d9c8be20746493&chksm=9038920ba74f1b1dfce0e5003044be3286eec9b1b57573cb89e0366e6601dcaab34c5b6b3daa#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247587652&amp;idx=1&amp;sn=1f6aebff00dcbeb385dcf7b3c1f2606b&amp;chksm=903893d5a74f1ac391f3b32709ff3b44ef9b1e317c1f4c1ce269e76475e5392ca038dbc02400#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247587652&idx=1&sn=1f6aebff00dcbeb385dcf7b3c1f2606b&chksm=903893d5a74f1ac391f3b32709ff3b44ef9b1e317c1f4c1ce269e76475e5392ca038dbc02400#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247588188&amp;idx=1&amp;sn=bae889fb60d94406dfcf7834ed66d75e&amp;chksm=90389dcda74f14db185aa0e11143d77ab1698756e931dd2c424747a6a990c2429eb112d0d1fc#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247588188&idx=1&sn=bae889fb60d94406dfcf7834ed66d75e&chksm=90389dcda74f14db185aa0e11143d77ab1698756e931dd2c424747a6a990c2429eb112d0d1fc#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247588896&amp;idx=1&amp;sn=c573599a7e54b80f7a6e17844cb6f416&amp;chksm=903898b1a74f11a78d460006dca7b5cce4c49e0fde98f2645c49107457760261d498a2999017#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247588896&idx=1&sn=c573599a7e54b80f7a6e17844cb6f416&chksm=903898b1a74f11a78d460006dca7b5cce4c49e0fde98f2645c49107457760261d498a2999017#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247588897&amp;idx=1&amp;sn=1d9a54db7e282fcee65190475494a8f8&amp;chksm=903898b0a74f11a6fb96511ad16a1daf342de82d6bca51e5708a2fdeaf73981d626417a79291#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247588897&idx=1&sn=1d9a54db7e282fcee65190475494a8f8&chksm=903898b0a74f11a6fb96511ad16a1daf342de82d6bca51e5708a2fdeaf73981d626417a79291#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247588989&amp;idx=1&amp;sn=8ee0af31f320fabab5c642a85e21d4e0&amp;chksm=903898eca74f11faa59f77924c339d44af5ab1c20fd60cc6003a012c3fa7e278c1fcaee82718#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247588989&idx=1&sn=8ee0af31f320fabab5c642a85e21d4e0&chksm=903898eca74f11faa59f77924c339d44af5ab1c20fd60cc6003a012c3fa7e278c1fcaee82718#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247589292&amp;idx=1&amp;sn=ec2f107ddc904bfa3a890dc51c3d3807&amp;chksm=9038993da74f102b9256378ae65435d74e4444fd72251cbcf29131bc85e605e7d17deabfe1df#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247589292&idx=1&sn=ec2f107ddc904bfa3a890dc51c3d3807&chksm=9038993da74f102b9256378ae65435d74e4444fd72251cbcf29131bc85e605e7d17deabfe1df#rd</a></p><p><a href='https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&amp;mid=2247589293&amp;idx=1&amp;sn=3b811147ae663bfae2731c5294c56414&amp;chksm=9038993ca74f102a34bb36f175b46b375d0c75a44deea0248297eaedce836456152c642da43c#rd' target='_blank' class='url'>https://mp.weixin.qq.com/s?__biz=MzA4NzMxNTk2Ng==&mid=2247589293&idx=1&sn=3b811147ae663bfae2731c5294c56414&chksm=9038993ca74f102a34bb36f175b46b375d0c75a44deea0248297eaedce836456152c642da43c#rd</a></p></div></div>
 </body>
 </html>
